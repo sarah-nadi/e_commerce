@@ -1,0 +1,41 @@
+
+    <section class="bg-main-light p-2 rounded-2 w-75 mx-auto shadow my-3">
+        <h1 class="h3">
+            Shop Cart :
+        </h1>
+        <div class="content d-flex justify-content-between px-4">
+            <h3 class="text-main fw-bold fs-5 mb-3 mt-2">Total cart price : {{cartData.totalCartPrice | currency : 'GBP'}} </h3>
+            @if (cartData.products.length) {
+                <button class="product clear-cart fw-bold " (click)="deleteCart()">Clear Cart</button>
+            }
+
+        </div>
+        <div class="container">
+            @for (item of cartData.products; track item.product._id) {
+                <div class="row border-bottom border-2">
+                    <div class="col-md-2 p-2">
+                        <img class="w-75" [src]="item.product.imageCover" alt="">
+                    </div>
+                    <div class="col-8 p-2 pt-4">
+                        <h2 class="h4">{{item.product.title}}</h2>
+                        <h6 class="text-main">{{item.price}}</h6>
+                        <p (click)="deleteItem(item.product._id)" class="text-danger mt-2"><i  class="cursor-pointer me-2 fa-solid fa-trash"></i>remove</p>
+                    </div>
+                    <div class="col-2 d-flex justify-content-evenly align-items-center">
+                        <span (click)="updateProductQuantity(item.product._id , item.count +1)" class="quantity cursor-pointer"><i class="fa-solid fa-plus"></i></span>
+                        <p class="fw-bold count">{{item.count}}</p>
+                        @if (item.count>1) {
+                            <span (click)="updateProductQuantity(item.product._id , item.count -1)" class="quantity cursor-pointer"><i class="fa-solid fa-minus"></i></span>
+
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        @if (cartData.products.length) {
+            <button [routerLink]="[ '/main/checkout' , cartData._id]" class="w-50 d-block mx-auto btn-main mt-2">check out</button>
+
+        }
+    
+    
+    </section>

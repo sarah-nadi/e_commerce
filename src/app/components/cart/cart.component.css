@@ -1,0 +1,17 @@
+.quantity{
+    padding: 8px;
+    border: 1px solid #0aad0a;
+    border-radius: 3px;
+}
+
+@media (max-width: 480px){
+    .clear-cart{
+        width: fit-content;
+        flex: none;
+
+    }
+    .count{
+        margin: 0px 8px;
+    }
+
+}

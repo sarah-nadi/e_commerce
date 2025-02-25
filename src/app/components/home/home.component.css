@@ -1,0 +1,12 @@
+.product .btn-main{
+    transform: translateY(120%);
+    transition: 350ms;
+  }
+
+.product:hover .btn-main{
+    transform: translateY(0%);
+}
+
+.d-flex div{
+    font-size: 13px;
+}

@@ -1,0 +1,14 @@
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            @for (cat of cats; track cat._id) {
+                <div class="category col-md-3 p-3 col-11 mx-auto">
+                    <div class=" border-1 border rounded-2 product  text-center">
+                        <img style="height: 300px;" class="w-100" [src]="cat.image" alt="">
+                        <h2 class="fw-bold fs-3 text-main my-3">{{cat.name}}</h2>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

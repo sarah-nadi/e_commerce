@@ -1,0 +1,8 @@
+.add{
+    height:fit-content;
+    padding:2px 0px;
+    flex:none;
+}
+.remove{
+    flex:none;
+}

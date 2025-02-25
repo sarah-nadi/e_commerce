@@ -1,0 +1,41 @@
+<div class="container">
+    <h1 class=" text-center border-top border-bottom  border-sucess mt-3 w-50 mx-auto py-2 fw-bold">Our Products</h1>
+    <input [(ngModel)]="searchValue" type="text" placeholder="search by name...." class=" mx-auto w-50 form-control product my-3 py-2 ">
+    <div class="row">
+        @for (item of productsarr | searchpipe :searchValue ; track item._id) {
+            <div class="col-md-2 col-sm-6 col-11 mx-auto p-2">
+                <div class="product p-2 rounded-2" >
+                   <div [routerLink]="['/main/productDetails' ,item._id]">
+                    <div class="img">
+                        <img class="w-100" [src]="item.imageCover" alt="">
+                    </div>
+                    <div class="product-caption">
+                        <h2 class="fs-6 text-main pt-2">{{item.category.name}}</h2>
+                        <h1 class="fs-6 fw-bold">{{item.title.split(' ').splice(0,2).join(' ')}}</h1>
+                        <div class="d-flex justify-content-between small">
+                            <span>{{item.price}} EGP</span>
+                            
+                               <div>
+                                @for (star of [1,2,3,4,5].slice(0,item.ratingsAverage); track $index) {
+                                    <span> <i class="fa-solid fa-star rating-color"></i></span>
+                                    
+                                }
+                                @if (item.ratingsAverage) {
+                                    <span><i class="fa-solid fa-star-half-stroke rating-color"></i></span>
+                                }
+                                <span>{{item.ratingsAverage}}</span>
+                               </div>
+                               
+                                
+                            
+                        </div>
+                        
+                    </div>
+                   </div>
+                   <div class="icon d-flex justify-content-end"><i (click)="addItemToWishlist(item._id)" class="fa-solid fa-heart fs-5 mt-3 "></i></div>
+                    <button (click)="addItem(item._id)" class="w-100 btn-main mt-1">add to cart   <i class="fa-solid fa-cart-shopping fa-beat ms-1"></i></button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
